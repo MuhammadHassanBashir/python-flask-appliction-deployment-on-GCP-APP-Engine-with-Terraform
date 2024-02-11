@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: citation-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: citation
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: citation
+        version: v1
+    spec:
+      serviceAccountName: wb-sa
+      nodeSelector:
+        iam.gke.io/gke-metadata-server-enabled: "true"
+      containers:
+      - name: citation
+        image: gcr.io/rajat-demo-354311/citation:latest
+        ports:
+        - containerPort: 5000
+
+
+# gcloud builds submit --tag gcr.io/rajat-demo-354311/citation --timeout=9000 --machine-type=n1-highcpu-32
