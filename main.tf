@@ -41,7 +41,7 @@ resource "google_app_engine_standard_app_version" "myapp_v1" {
 
   deployment {
     zip {
-      source_url = "https://storage.googleapis.com/test-az-test/wb-citations-main.zip"  # Replace with your GitHub repository URL
+      source_url = "https://storage.googleapis.com/test-az-test/wb-citations-main.zip"  # Replace with your bucket URL
     }
   }
 
